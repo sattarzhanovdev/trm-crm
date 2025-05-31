@@ -58,7 +58,7 @@ const ClientsTable = () => {
   const statusList = ['Ожидание', 'Обрабатывается', 'Обработан', 'Отмена'];
 
   const filteredClients = clients?.filter(client =>
-    (selectedWorker === 'Все' || client.appointed_worker === selectedWorker) &&
+    (selectedWorker === 'Все' || client.appointed_worker === Number(selectedWorker)) &&
     (selectedStatus === 'Все' || client.status === selectedStatus)
   );
 
@@ -83,7 +83,7 @@ const ClientsTable = () => {
             >
               <option value={"Все"} selected>Все</option>
               {workers && workers.map((item, idx) => (
-                <option key={idx} value={item.name}>{item.name}</option>
+                <option key={idx} value={item.id}>{item.name}</option>
               ))}
             </select>
             <select
