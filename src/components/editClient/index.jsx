@@ -57,13 +57,14 @@ const EditClient = ({setActive}) => {
 
   const handleDelete = async () => {
     try {
-      API.deleteClient(clientId)
-        .then(res => {
-          if (res.status === 204) {
-            setActive(false);
-            window.location.reload();
-          }
-        });
+      const ask = window.confirm("Вы уверены, что хотите удалить этого клиента?");
+      if (ask) {
+        const response = await API.deleteClient(clientId);
+        if (response.status === 200) {
+          setActive(false);
+          window.location.reload();
+        }
+      }
     } catch (error) {
       console.error("Error deleting client:", error);
     }
