@@ -44,12 +44,11 @@ const EditClient = ({setActive}) => {
     try{
       API.updateClient(clientId, data)
         .then(res => {
-          if (res.status === 201) {
+          if (res.status === 200) {
             setActive(false);
             window.location.reload();
           }
         });
-      
     }catch{
       
     }
