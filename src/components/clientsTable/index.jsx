@@ -121,7 +121,7 @@ const ClientsTable = () => {
                   }}>
                     <img src={Icons.edit} alt="edit" />
                   </td>
-                  <td data-label="Ф.И.О клиента">{item.full_name}</td>
+                  <td data-label="Ф.И.О клиента" className={c.name}>{item.full_name}</td>
                   <td data-label="Телефон">{item.phone_number}</td>
                   <td data-label="Менеджер">
                     {workers && workers.find(worker => worker.id === item.appointed_worker)?.name || '—'}
