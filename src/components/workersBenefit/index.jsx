@@ -54,6 +54,15 @@ const WorkersBenefit = () => {
                 );
               })
             }
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Сумма: {leads?.length} лидов</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
       </div>
