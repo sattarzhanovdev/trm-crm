@@ -106,7 +106,6 @@ const ClientsTable = () => {
               <th><img src={Icons.edit} alt="edit" /></th>
               <th>Ф.И.О клиента</th>
               <th>Телефон</th>
-              {/* <th className={c.services}>Процедуры</th> */}
               <th>Менеджер</th>
               <th>Прайс по итогу</th>
               <th>Статус</th>
@@ -114,26 +113,26 @@ const ClientsTable = () => {
           </thead>
           <tbody>
             {Array.isArray(filteredClients) && filteredClients.length > 0 ? (
-              filteredClients.reverse().map(item => (
+              filteredClients.slice().reverse().map(item => (
                 <tr key={item.id}>
-                  <td onClick={() => {
-                    console.log(item);
-                    
+                  <td data-label="Редактировать" onClick={() => {
                     localStorage.setItem('clientId', item.id);
-                    setEditActive(true)
+                    setEditActive(true);
                   }}>
                     <img src={Icons.edit} alt="edit" />
                   </td>
-                  <td>{item.full_name}</td>
-                  <td>{item.phone_number}</td>
-                  <td>
-                    {workers && workers.find(worker => worker.id === item.appointed_worker).name}
+                  <td data-label="Ф.И.О клиента">{item.full_name}</td>
+                  <td data-label="Телефон">{item.phone_number}</td>
+                  <td data-label="Менеджер">
+                    {workers && workers.find(worker => worker.id === item.appointed_worker)?.name || '—'}
                   </td>
-                  <td>
-                    {item.payment}
-                  </td>
-                  <td>
-                    <div className={item.status === 'Ожидание' ? c.todo : item.status === 'Обрабатывается' ? c.doing : item.status === 'Обработан' ? c.done : c.cancel}>
+                  <td data-label="Прайс по итогу">{item.payment}</td>
+                  <td data-label="Статус">
+                    <div className={
+                      item.status === 'Ожидание' ? c.todo :
+                      item.status === 'Обрабатывается' ? c.doing :
+                      item.status === 'Обработан' ? c.done : c.cancel
+                    }>
                       {item.status}
                     </div>
                   </td>
@@ -141,13 +140,14 @@ const ClientsTable = () => {
               ))
             ) : (
               <tr>
-                <td><img src={Icons.edit} alt="edit" /></td>
-                <td colSpan={6}>Клиентов нет</td>
+                <td data-label="Редактировать"><img src={Icons.edit} alt="edit" /></td>
+                <td data-label="Ф.И.О клиента" colSpan={5}>Клиентов нет</td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
+
 
       {active && <Components.AddClient setActive={setActive} />}
       {editActive && <Components.EditClient setActive={setEditActive} />}

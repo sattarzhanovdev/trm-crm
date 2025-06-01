@@ -10,7 +10,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      .left,
+      .right, 
+      .date {
+        width: 100%;
+        margin-bottom: 10px;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .right{
+        flex-direction: row;
+        justify-content: space-between;
+        .date{
+          width: 100%;
+          select{
+            width: 100%;
+          }
+        }
+      }
+    }
     .left{
       display: flex;
       align-items: center;
@@ -26,26 +47,46 @@
         font-weight: 500;
         line-height: 18px; /* 105.882% */
         letter-spacing: -0.17px;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
-      .search{
+      .search {
         position: relative;
-        img{
+
+        img {
           position: absolute;
           left: 10px;
           top: 50%;
           transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
         }
-        input{
+
+        input {
           width: 340px;
           padding: 8px 36px;
           border-radius: 7px;
           border: 1.5px solid #BFBFC5;
           font-size: 17px;
           outline: none;
-          font-style: normal;
           font-weight: 500;
-          line-height: 18px; /* 105.882% */
+          line-height: 18px;
           letter-spacing: -0.17px;
+        }
+
+        @media (max-width: 768px) {
+          input {
+            width: 70%; // адаптивно растягиваем по ширине родителя
+            font-size: 16px;
+            padding: 8px 36px;
+          }
+
+          img {
+            left: 12px;
+            width: 18px;
+            height: 18px;
+          }
         }
       }
     }
@@ -111,142 +152,174 @@
       }
     }
   }
-  .table{
+  .table {
     width: 100%;
-    table{
+    overflow-x: auto;
+
+    table {
       width: 100%;
       border-collapse: collapse;
-      thead{
-        tr{
-          th{
+
+      thead {
+        tr {
+          th {
             padding: 15px 0;
             font-size: 17px;
-            font-style: normal;
             font-weight: 500;
-            line-height: 18px; /* 105.882% */
+            line-height: 18px;
             letter-spacing: -0.17px;
             text-align: center;
             color: #A4A4A8;
-            &:first-child{
+
+            &:first-child {
               padding-left: 0;
             }
             &:first-child,
-            &:nth-child(2){
+            &:nth-child(2) {
               text-align: left;
               padding-left: 20px;
             }
-            &.services{
+
+            &.services {
               width: 350px;
             }
-
           }
         }
       }
-      tbody{
-        tr{
+
+      tbody {
+        tr {
           background: white;
-          border-bottom: 1px solid rgba(191, 191, 197, 0.50);
-          td{
+          border-bottom: 1px solid rgba(191, 191, 197, 0.5);
+
+          td {
             padding: 15px 0;
             font-size: 17px;
-            font-style: normal;
             font-weight: 500;
-            line-height: 18px; /* 105.882% */
+            line-height: 18px;
             letter-spacing: -0.17px;
             text-align: center;
             color: #000000;
-            &:first-child{
+
+            &:first-child {
               width: 40px;
               text-align: center;
               margin-right: 10px;
               border-radius: 8px 0 0 8px;
               padding-left: 10px;
             }
-            &:last-child{
+
+            &:last-child {
               border-radius: 0 8px 8px 0;
             }
-            &:nth-child(2){
+
+            &:nth-child(2) {
               text-align: left;
               padding-left: 20px;
             }
 
-            &.services{
+            &.services {
               display: flex;
               flex-wrap: wrap;
-              text-align: center;
               justify-content: center;
-              gap: 5px; /* Отступ между элементами */
-              max-width: 100%; /* Или другой размер, ограничивающий ширину */
-              div{
+              gap: 5px;
+
+              div {
                 white-space: nowrap;
               }
             }
-            div{
+
+            div {
               display: inline-block;
               margin-right: 4px;
               font-size: 17px;
-              font-style: normal;
               font-weight: 500;
-              line-height: 18px; /* 105.882% */
+              line-height: 18px;
               letter-spacing: -0.17px;
               color: white;
               border-radius: 4px;
               padding: 4px 8px;
-              &.cancel{
+
+              &.cancel {
                 background: red;
               }
 
-              &.todo{
+              &.todo {
                 background: blue;
               }
 
-              &.doing{
+              &.doing {
                 background: #EDBB00;
               }
 
-              &.done{
+              &.done {
                 background: #4AC137;
               }
             }
 
-            .date{
-              display: inline-block;
-              margin-right: 4px;
-              font-size: 17px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 18px; /* 105.882% */
-              letter-spacing: -0.17px;
+            .date {
               background: #216EFD;
-              color: white;
-              border-radius: 4px;
-              padding: 4px 8px;
             }
-            .service{
-              display: inline-block;
-              margin-right: 4px;
-              font-size: 17px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 18px; /* 105.882% */
-              letter-spacing: -0.17px;
+
+            .service {
               background: #4AC137;
-              color: white;
-              border-radius: 4px;
-              padding: 4px 8px;
             }
-            .worker{
-              display: inline-block;
-              margin-right: 4px;
-              font-size: 17px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 18px; /* 105.882% */
-              letter-spacing: -0.17px;
+
+            .worker {
               background: #EDBB00;
-              color: white;
-              border-radius: 4px;
-              padding: 4px 8px;
+            }
+          }
+        }
+      }
+    }
+
+    // Адаптив под мобилку
+    @media (max-width: 768px) {
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+        width: 100%;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          margin-bottom: 15px;
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+          padding: 10px;
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            padding: 10px 0;
+            border-top: 1px solid #f0f0f0;
+
+            &:first-child {
+              border-top: none;
+            }
+
+            &::before {
+              content: attr(data-label);
+              font-weight: bold;
+              color: #999;
+              margin-right: 10px;
+              flex-shrink: 0;
+            }
+
+            // Статус-бейдж
+            div {
+              margin-left: auto;
             }
           }
         }

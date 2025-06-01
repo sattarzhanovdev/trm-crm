@@ -39,17 +39,20 @@ const WorkersBenefit = () => {
           </thead>
           <tbody>
             {
-              workers && workers.map((item, i) => (
-                <tr key={i}>
-                  <td>{i+1}</td>
-                  <td>{item.name}</td>
-                  <td>{leads && leads.filter(lead => lead.appointed_worker === item.id).length}</td>
-                  <td>{leads && leads.filter(lead => lead.appointed_worker === item.id && lead.status === 'Ожидание').length}</td>
-                  <td>{leads && leads.filter(lead => lead.appointed_worker === item.id && lead.status === 'Обрабатывается').length}</td>
-                  <td>{leads && leads.filter(lead => lead.appointed_worker === item.id && lead.status === 'Обработан').length}</td>
-                  <td>{leads && leads.filter(lead => lead.appointed_worker === item.id && lead.status === 'Отмена').length}</td>
-                </tr>
-              ))
+              workers && workers.map((item, i) => {
+                const filteredLeads = leads?.filter(lead => lead.appointed_worker === item.id) || [];
+                return (
+                  <tr key={i}>
+                    <td data-label="#"> {i + 1} </td>
+                    <td data-label="Данные сотрудников"> {item.name} </td>
+                    <td data-label="Количество лидов"> {filteredLeads.length} </td>
+                    <td data-label="Ожидание"> {filteredLeads.filter(l => l.status === 'Ожидание').length} </td>
+                    <td data-label="Обрабатывается"> {filteredLeads.filter(l => l.status === 'Обрабатывается').length} </td>
+                    <td data-label="Обработан"> {filteredLeads.filter(l => l.status === 'Обработан').length} </td>
+                    <td data-label="Отмена"> {filteredLeads.filter(l => l.status === 'Отмена').length} </td>
+                  </tr>
+                );
+              })
             }
           </tbody>
         </table>
