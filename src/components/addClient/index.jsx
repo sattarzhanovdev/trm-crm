@@ -42,7 +42,7 @@ const AddClient = ({setActive}) => {
   return (
     <div className={c.add}>
       <div className={c.client}>
-        <h2>Изменение клиента</h2>
+        <h2>Добавление клиента</h2>
         <form>
           <div>
             <span>Имя клиента</span>
@@ -90,7 +90,7 @@ const AddClient = ({setActive}) => {
               <option value="">Выберите менеджера</option>
               {workers &&
                 workers.map((worker) => (
-                  <option key={worker.id} value={worker.name}>
+                  <option key={worker.id} value={worker.id}>
                     {worker.name}
                   </option>
                 ))}

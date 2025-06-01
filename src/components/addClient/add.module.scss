@@ -374,6 +374,7 @@
           input,
           select {
             width: 100%;
+            max-width: 300px;
           }
         }
       }
@@ -412,18 +413,26 @@
     }
 
     .res {
+      width: 100%;
+
       flex-direction: column;
       align-items: flex-start;
       padding: 20px;
       height: auto;
       gap: 20px;
       border-radius: 0;
-      position: static;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      
 
       .left {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+        h1{
+          font-size: 24px;
+        }
 
         form {
           flex-direction: column;
@@ -433,7 +442,7 @@
       }
 
       .right {
-        width: 100%;
+        width: 90%;
         margin: 0;
         flex-direction: column;
         align-items: stretch;

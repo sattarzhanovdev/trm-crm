@@ -119,7 +119,7 @@ const EditClient = ({setActive}) => {
               <option value="">Выберите менеджера</option>
               {workers &&
                 workers.map((worker) => (
-                  <option key={worker.id} value={worker.name}>
+                  <option key={worker.id} value={worker.id}>
                     {worker.name}
                   </option>
                 ))}
