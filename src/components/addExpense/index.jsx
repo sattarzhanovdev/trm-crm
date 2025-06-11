@@ -26,7 +26,6 @@ const AddExpense = ({ setActive }) => {
       .catch(err => console.error(err))
   };
 
-  console.log(data);
 
   return (
     <div className={c.addExpense}>
