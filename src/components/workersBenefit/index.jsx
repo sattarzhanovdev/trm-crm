@@ -31,10 +31,10 @@ const WorkersBenefit = () => {
               <th></th>
               <th>Данные сотрудников</th>
               <th>Количество лидов</th>
-              <th>Ожидание</th>
-              <th>Обрабатывается</th>
-              <th>Обработан</th>
-              <th>Отмена</th>
+              <th>В ожидании</th>
+              <th>В обработке</th>
+              <th>Успешно</th>
+              <th>База зин</th>
             </tr>
           </thead>
           <tbody>
@@ -46,10 +46,10 @@ const WorkersBenefit = () => {
                     <td data-label="#"> {i + 1} </td>
                     <td data-label="Данные сотрудников"> {item.name} </td>
                     <td data-label="Количество лидов"> {filteredLeads.length} </td>
-                    <td data-label="Ожидание"> {filteredLeads.filter(l => l.status === 'Ожидание').length} </td>
-                    <td data-label="Обрабатывается"> {filteredLeads.filter(l => l.status === 'Обрабатывается').length} </td>
-                    <td data-label="Обработан"> {filteredLeads.filter(l => l.status === 'Обработан').length} </td>
-                    <td data-label="Отмена"> {filteredLeads.filter(l => l.status === 'Отмена').length} </td>
+                    <td data-label="В ожидании"> {filteredLeads.filter(l => l.status === 'Ожидание').length} </td>
+                    <td data-label="В обработке"> {filteredLeads.filter(l => l.status === 'Обрабатывается').length} </td>
+                    <td data-label="Успешно"> {filteredLeads.filter(l => l.status === 'Обработан').length} </td>
+                    <td data-label="База зин"> {filteredLeads.filter(l => l.status === 'Отмена').length} </td>
                   </tr>
                 );
               })

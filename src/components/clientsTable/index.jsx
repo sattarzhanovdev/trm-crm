@@ -55,7 +55,7 @@ const ClientsTable = () => {
     return null;
   };
 
-  const statusList = ['Ожидание', 'Обрабатывается', 'Обработан', 'Отмена'];
+  const statusList = ['Ожидание', 'Обрабатывается', 'Обработан', 'Отмена', 'Принимает решение', 'Перезвон', 'Недозвон', 'Частичная оплата', 'Рассрочки', 'Фейк', 'Закрыто не реализовано'];
 
   const filteredClients = clients?.filter(client =>
     (selectedWorker === 'Все' || client.appointed_worker === Number(selectedWorker)) &&
@@ -133,7 +133,17 @@ const ClientsTable = () => {
                       item.status === 'Обрабатывается' ? c.doing :
                       item.status === 'Обработан' ? c.done : c.cancel
                     }>
-                      {item.status}
+                      {
+                        item.status === 'Ожидание' ? 
+                        'В ожидании' :
+                        item.status === 'Обрабатывается' ?
+                        'В обработке' :
+                        item.status === 'Обработан' ?
+                        'Успешно' :
+                        item.status === 'Отмена' ?
+                        'База зин' :
+                        item.status
+                      }
                     </div>
                   </td>
                 </tr>

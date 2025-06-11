@@ -68,6 +68,12 @@ const EditClient = ({setActive}) => {
       console.error("Error deleting client:", error);
     }
   }
+
+  const statusList = ['Ожидание', 'Обрабатывается', 'Обработан', 'Отмена', 'Принимает решение', 'Перезвон', 'Недозвон', 'Частичная оплата', 'Рассрочки', 'Фейк', 'Закрыто не реализовано'];
+
+  console.log(data.status);
+  
+
   return (
     <div className={c.add}>
       <div className={c.client}>
@@ -134,60 +140,14 @@ const EditClient = ({setActive}) => {
             К оплате: {data.payment} сом
           </h1>
 
-          <form>
-            <div>
-              <input
-                type="radio"
-                id="Ожидание"
-                name="status"
-                value="Ожидание"
-                checked={data.status === "Ожидание"}
-                onChange={(e) =>
-                  setData((prev) => ({ ...prev, status: e.target.value }))
-                }
-              />
-              <label htmlFor="Ожидание">Ожидание</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="Обрабатывается"
-                name="status"
-                value="Обрабатывается"
-                checked={data.status === "Обрабатывается"}
-                onChange={(e) =>
-                  setData((prev) => ({ ...prev, status: e.target.value }))
-                }
-              />
-              <label htmlFor="Обрабатывается">Обрабатывается</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="Обработан"
-                name="status"
-                value="Обработан"
-                checked={data.status === "Обработан"}
-                onChange={(e) =>
-                  setData((prev) => ({ ...prev, status: e.target.value }))
-                }
-              />
-              <label htmlFor="Обработан">Обработан</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="Отмена"
-                name="status"
-                value="Отмена"
-                checked={data.status === "Отмена"}
-                onChange={(e) =>
-                  setData((prev) => ({ ...prev, status: e.target.value }))
-                }
-              />
-              <label htmlFor="Отмена">Отмена</label>
-            </div>
-          </form>
+          <select onChange={(e) => setData((prev) => ({ ...prev, status: e.target.value }))} value={data.status}>
+            {statusList.map((status, idx) => (
+              <option key={idx} value={status}>
+                {status}
+              </option>
+            ))}
+          </select>
+
         </div>
         <div className={c.right}>
           <button onClick={() => setActive(false)}>Отменить</button>
