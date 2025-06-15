@@ -71,8 +71,6 @@ const EditClient = ({setActive}) => {
 
   const statusList = ['Ожидание', 'Обрабатывается', 'Обработан', 'Отмена', 'Принимает решение', 'Перезвон', 'Недозвон', 'Частичная оплата', 'Рассрочки', 'Фейк', 'Закрыто не реализовано'];
 
-  console.log(data.status);
-  
 
   return (
     <div className={c.add}>
@@ -84,7 +82,7 @@ const EditClient = ({setActive}) => {
             <input
               type="text"
               placeholder="Введите имя клиента"
-              value={data.full_name}
+              value={data?.full_name}
               onChange={(e) =>
                 setData((prev) => ({ ...prev, full_name: e.target.value }))
               }
@@ -94,7 +92,7 @@ const EditClient = ({setActive}) => {
             <span>Номер телефона</span>
             <input
               placeholder="Введите номер телефона"
-              value={data.phone_number}
+              value={data?.phone_number}
               onChange={(e) =>
                 setData((prev) => ({ ...prev, phone_number: e.target.value }))
               }
@@ -105,7 +103,7 @@ const EditClient = ({setActive}) => {
             <input
               type="text"
               placeholder="Введите сумму оплаты"
-              value={data.payment}
+              value={data?.payment}
               onChange={(e) =>
                 setData((prev) => ({ ...prev, payment: e.target.value }))
               }
@@ -114,7 +112,7 @@ const EditClient = ({setActive}) => {
           <div>
             <span>Менеджер</span>
             <select
-              value={data.appointed_worker}
+              value={data?.appointed_worker}
               onChange={(e) =>
                 setData((prev) => ({
                   ...prev,
@@ -123,12 +121,12 @@ const EditClient = ({setActive}) => {
               }
             >
               <option value="">Выберите менеджера</option>
-              {workers &&
+              {workers ?
                 workers.map((worker) => (
                   <option key={worker.id} value={worker.id}>
                     {worker.name}
                   </option>
-                ))}
+                )) : null}
             </select>
           </div>
         </form>
