@@ -9,8 +9,11 @@ axios.defaults.baseURL = 'https://trmbackend.pythonanywhere.com'
 function App() {
   return (
     <div>
-      <Components.Navbar />
-      <MainRoutes />
+      {/* <Components.Navbar /> */}
+      {/* <MainRoutes /> */}
+      <h2>
+        Пожалуйста, оплатите подписку для продолжения использования системы
+      </h2>
     </div>
   )
 }
